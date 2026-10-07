@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+.venv/
+data/*
+*.pth
+!src/**/models/*.pth
+outputs/
+build/
+dist/
+*.egg-info/
+!data/README.md
