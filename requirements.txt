@@ -3,11 +3,9 @@ pandas
 scipy
 scikit-image
 scikit-learn
+opencv-python-headless
 xgboost
-mord
-shap
-opencv-python
-torch
 matplotlib
-pyyaml
-jupyter
+torch
+shap
+mord

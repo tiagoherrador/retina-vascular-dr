@@ -1,0 +1,114 @@
+{
+  "n_images": 600,
+  "grade_counts": {
+    "0": 322,
+    "1": 49,
+    "2": 151,
+    "3": 28,
+    "4": 50
+  },
+  "images_in_duplicate_groups": 2,
+  "repeats": 3,
+  "distinct_image_sizes": 14,
+  "size_vs_any_dr": {
+    "1050x1050": {
+      "healthy": 160,
+      "dr": 10
+    },
+    "1476x1117": {
+      "healthy": 2,
+      "dr": 0
+    },
+    "1504x1000": {
+      "healthy": 0,
+      "dr": 19
+    },
+    "1844x1226": {
+      "healthy": 0,
+      "dr": 5
+    },
+    "2048x1536": {
+      "healthy": 61,
+      "dr": 0
+    },
+    "2144x1424": {
+      "healthy": 0,
+      "dr": 4
+    },
+    "2416x1736": {
+      "healthy": 8,
+      "dr": 91
+    },
+    "2588x1958": {
+      "healthy": 41,
+      "dr": 41
+    },
+    "2896x1944": {
+      "healthy": 0,
+      "dr": 6
+    },
+    "3216x2136": {
+      "healthy": 2,
+      "dr": 66
+    },
+    "3388x2588": {
+      "healthy": 0,
+      "dr": 25
+    },
+    "4288x2848": {
+      "healthy": 0,
+      "dr": 3
+    },
+    "640x480": {
+      "healthy": 0,
+      "dr": 6
+    },
+    "819x614": {
+      "healthy": 48,
+      "dr": 2
+    }
+  },
+  "final": {
+    "any_dr": {
+      "model": "gradient boosting (XGBoost)",
+      "auc": 0.9419843007581511,
+      "auc_ci95": [
+        0.9268426967141844,
+        0.9598020068647124
+      ],
+      "quality_only_auc": 0.9540063601292879,
+      "within_size_auc": 0.8420221169036335,
+      "within_size_auc_ci95": [
+        0.7888934974148495,
+        0.9066673680896934
+      ],
+      "within_size_images_used": 351,
+      "quality_only_within_size_auc": 0.6469610044067514
+    },
+    "referable_dr": {
+      "model": "gradient boosting (XGBoost)",
+      "auc": 0.9187725844230746,
+      "auc_ci95": [
+        0.9002023790270064,
+        0.942353962962963
+      ],
+      "quality_only_auc": 0.9161124777834013,
+      "within_size_auc": 0.801918910554008,
+      "within_size_auc_ci95": [
+        0.7451089974635373,
+        0.8649150510740418
+      ],
+      "within_size_images_used": 419,
+      "quality_only_within_size_auc": 0.5822346022903125
+    }
+  },
+  "permutation_null": {
+    "n": 50,
+    "null_mean_auc": 0.5005239286831404,
+    "null_max_auc": 0.557062424594486,
+    "p_value": 0.0196078431372549,
+    "within_size_null_mean_auc": 0.45866300823147915,
+    "within_size_null_max_auc": 0.5824395111000249,
+    "within_size_p_value": 0.0196078431372549
+  }
+}

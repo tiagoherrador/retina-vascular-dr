@@ -1,0 +1,5 @@
+task,model,features,target_sensitivity,sensitivity,sens_ci95_low,sens_ci95_high,specificity,spec_ci95_low,spec_ci95_high,positives,negatives
+any_dr,gradient boosting (XGBoost),vessels + lesions,0.9,0.9005,0.8583,0.9294,0.794,0.7476,0.8355,278,322
+any_dr,gradient boosting (XGBoost),vessels + lesions (only image sizes with both healthy and DR),0.9,0.8826,0.8166,0.9239,0.8581,0.8025,0.8976,142,209
+referable_dr,gradient boosting (XGBoost),vessels + lesions,0.9,0.8937,0.8488,0.9286,0.7601,0.7141,0.8008,229,371
+referable_dr,gradient boosting (XGBoost),vessels + lesions (only image sizes with both healthy and DR),0.9,0.9002,0.843,0.9355,0.7989,0.7437,0.8426,167,252

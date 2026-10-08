@@ -1,0 +1,4 @@
+model,accuracy,macro_f1,qwk,qwk_sd,qwk_mixed_sizes_only
+"XGBoost, 5 classes",0.6983,0.3716,0.6506,0.0241,0.6517
+Ordinal logistic (mord),0.6467,0.382,0.6861,0.0038,0.6607
+Always predict the most common grade,0.5367,0.1397,0.0,0.0,0.0

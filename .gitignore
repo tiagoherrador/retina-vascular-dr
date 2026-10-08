@@ -4,10 +4,10 @@ __pycache__/
 .DS_Store
 .venv/
 data/*
-*.pth
-!src/**/models/*.pth
-outputs/
+!data/README.md
+models/*
+!models/README.md
 build/
 dist/
 *.egg-info/
-!data/README.md
+.pytest_cache/

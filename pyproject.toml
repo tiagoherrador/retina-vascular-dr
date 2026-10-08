@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "retina-dr"
+version = "0.2.0"
+description = "Interpretable diabetic-retinopathy screening from retinal-vessel morphometry, with leakage-free evaluation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Tiago Alejo Herrador"}]
+dependencies = ["numpy", "pandas", "scipy", "scikit-image", "scikit-learn", "opencv-python-headless", "xgboost", "matplotlib"]
+
+[project.optional-dependencies]
+fcunet = ["torch"]              # vessel network (the pretrained weights are downloaded on first use)
+explain = ["shap"]
+ordinal = ["mord"]
+dev = ["pytest"]
+
+[project.scripts]
+retina-extract = "retina_dr.extract_cli:main"
+retina-evaluate = "retina_dr.evaluate_cli:main"
+retina-example = "retina_dr.example_cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
