@@ -36,7 +36,14 @@ I used **600 photos** from the public APTOS 2019 collection (322 without DR and 
 
 Every measurement is taken **inside the retina** and expressed per unit of retina (for example, vessel density rather than vessel pixels), so a photo with a bigger black border is not mistaken for a different eye.
 
-## A trap I found: the image size gives away the answer
+## Following the analysis step by step
+
+Step 1 is the camera problem that shapes how I report everything else. Steps 2–6 are the results, and step 7 checks whether they could be luck.
+
+<details>
+<summary><b>Show the seven steps</b> (the camera trap, any DR, referable DR, sensitivity-first setting, which measurements matter, five grades, shuffling test)</summary>
+
+### 1. A trap I found: the image size gives away the answer
 
 APTOS photos were taken with different cameras at different clinics, and the image size is a good fingerprint of the source. In my 600 photos the size alone says a lot about the diagnosis:
 
@@ -58,7 +65,7 @@ So a model can score well just by recognising the camera. To see how big that ef
 
 *How to read this number (the "AUC").* 0.5 means a coin flip and 1.0 means always right. 0.7–0.8 is fair, above 0.8 is good.
 
-## Results: healthy vs any DR
+### 2. Results: healthy vs any DR
 
 I used repeated 5-fold cross-validation (the images are split into five groups; each group is tested by a model trained on the other four; this is repeated three times). Photos of the same eye never end up on both sides of a split — I found two such duplicated pairs, one of them with *different* grades in the two copies (3 and 2).
 
@@ -78,7 +85,7 @@ I used repeated 5-fold cross-validation (the images are split into five groups; 
 
 ![ROC curves: vessels + lesions vs image quality only](results/roc_any_dr.png)
 
-## Results: moderate or worse DR ("referable")
+### 3. Results: moderate or worse DR ("referable")
 
 Clinicians usually decide whether to send a patient to a specialist when DR is **moderate or worse** (grade ≥ 2), so I repeated the analysis for that question.
 
@@ -91,7 +98,7 @@ Clinicians usually decide whether to send a patient to a specialist when DR is *
 
 It is a bit harder than the any-DR question within the same camera (0.80 vs 0.84). The full tables, with intervals, are in `results/cv_auc.csv`.
 
-## A sensitivity-first setting
+### 4. A sensitivity-first setting
 
 A screening tool should miss as few cases as possible. I asked for a threshold that catches **at least 90 % of the cases**, and I chose that threshold **inside the training part of each fold**, never looking at the images it is then reported on. (Picking it on the test images makes the result look better than it is.)
 
@@ -104,7 +111,7 @@ A screening tool should miss as few cases as possible. I asked for a threshold t
 
 These numbers are **indicative**: the camera can still help a little through the threshold, so I would not read them as what a clinic would see. For context, an approved screening system was tested prospectively in a 900-patient trial against pre-set targets of about 85 % sensitivity and 82.5 % specificity ([Abràmoff 2018](docs/references.md)); it is a different task and a different kind of system, so this is context, not a benchmark.
 
-## Which measurements matter?
+### 5. Which measurements matter?
 
 ![What drives the any-DR prediction](results/shap_any_dr.png)
 
@@ -123,7 +130,7 @@ To see which measurements separate the two groups **among photos of the same siz
 
 Two honest remarks. First, "fewer vessels detected" does not necessarily mean "fewer vessels": hazy images, poor contrast or bright lesions can also make the vessel map thinner. I did not test which it is. Second, tortuosity, which is the classical vascular marker, is among the weakest signals here.
 
-## Results: the five grades
+### 6. Results: the five grades
 
 Telling the five grades apart is much harder with 600 images, because the severe grades are rare (28 photos of grade 3 and 50 of grade 4).
 
@@ -137,11 +144,13 @@ Telling the five grades apart is much harder with 600 images, because the severe
 
 The *agreement score* (quadratic weighted kappa) counts a mistake of one grade as less serious than a mistake of three: 0 is chance and 1 is perfect. Restricted to image sizes with both kinds of photo it stays about the same (0.65–0.66). Even so, the model gets most of the mild and severe photos wrong (see the matrix), so I would not use it to grade DR.
 
-## Is this just luck?
+### 7. Is this just luck?
 
 I re-ran the whole cross-validation 50 times with the labels shuffled. On shuffled labels the AUC stays around 0.50 (highest 0.56); within the same size the shuffled values reach at most 0.58. The real results (0.94 pooled and 0.84 within size) are above all 50 shuffles in both cases (p ≈ 0.02, the smallest value 50 shuffles can give).
 
 ![Real labels vs shuffled labels](results/permutation_null.png)
+
+</details>
 
 ## Things to keep in mind
 
